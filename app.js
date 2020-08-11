@@ -1,7 +1,94 @@
+//a button that triggers the start of the quiz
+
+//the first of five questions with four possible answers will appear
+//  only one choice can be selected at a time
+//  the selcted answer will be logged when the submit button is clicked
+//  an alert will appear with a message showing either "correct" or the correct answer if wrong choice selected
+//  the submit button should then become the next question button
+//  clicking the next question button should reset the screen for the next question
+
+//The bottom left corner should display the current question number out of 5
+//The bottom right corner should track the amount of correct answers as the user progresses throug the quiz
+
+//After the final question has been answered the submit button should display "see results"
+//  This will take the user to the final screen which will show their final score
+//  There should be a special message tied to the test results, displayed
+//  A button should appear that allows the user to restart the quiz from the "start quiz" display
+
+const store = [
+  {
+    id: 1,
+    question: '',
+    choices: ['a','b','c','d'],
+    correctAnswer: 'a',
+    answeredCorrectly: false
+  },
+  {
+    id: 2,
+    question: '',
+    choices: ['a','b','c','d'],
+    correctAnswer: 'a',
+    answeredCorrectly: false
+  },
+  {
+    id: 3,
+    question: '',
+    choices: ['a','b','c','d'],
+    correctAnswer: 'a',
+    answeredCorrectly: false
+  },
+    {
+    id: 4,
+    question: '',
+    choices: ['a','b','c','d'],
+    correctAnswer: 'a',
+    answeredCorrectly: false
+  },
+  {
+    id: 5,
+    question: '',
+    choices: ['a','b','c','d'],
+    correctAnswer: 'a',
+    answeredCorrectly: false
+  }
+]
+
+let score = 0;
+let questionNumber = 0;
+
+
+function generateStartScreen
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**
  * Example store structure
  */
-const store = {
+//const store = {
   // 5 or more questions are required
   questions: [
     {
@@ -25,9 +112,9 @@ const store = {
       correctAnswer: '2019'
     }
   ],
-  quizStarted: false,
-  questionNumber: 0,
-  score: 0
+  //quizStarted: false,
+  //questionNumber: 0,
+  //score: 0
 };
 
 /**
