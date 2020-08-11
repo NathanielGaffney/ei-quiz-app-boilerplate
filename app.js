@@ -58,7 +58,7 @@ let questionNumber = 0;
 
 
 function generateStartScreen{
-//button that triggers start quiz
+// button that triggers start quiz
 // html image tag location
 }
 
@@ -67,20 +67,25 @@ function generateQuestionScreen{
 // display question form based on questionNumber
 // display score and question count
 // question form has radio buttons and submit button
-// upon submit press (render), display correct answer and add to score acc if correct
-// submit button is replaced with next question button
-// next question button increment the question number, changing the question object, and then re render
+// shows updated question counter 
+}
+
+function generateNextQuestionScreen{
+// Displays results from previous
+// shows updated score counter
+// displays "next" question button
 }
 
 function generateEndScreen{
 // html image tag location
 // congrats message from array, based on score
 // score
-// button to re take quiz (sets question count to 0 and renders)
+// button to re take quiz 
 }
 
-function generateScreen{
-//this function calls the correct generate function based on a conditional
+// Leaving just incase we decide to use it later
+// function generateScreen{
+// this function calls the correct generate function based on a conditional
 // if the questionNumber is 0 then generateStartScreen
 // if the questionNumber is 1-5 generateQuestion screen
 // if the questionNumber is 6 generateEndScreen
@@ -88,27 +93,49 @@ function generateScreen{
 
 ////////////
 
-function render{
- // varible is  = generateScreen()
+function render(arg){
+ // varible is  = arg, which could be generateScreen() or generateNextQuestionScreen;
  // jquery location .html(variable)
 }
 
 /////////
 
-function handleStart{
+// We could potentially pass in all other generate functions as an argument (arg) in our render function
 
+function handleStart{
+// jquery will point to our start button and will listen for a click
+// on click:
+//  increment questionNumber counter
+//  call render function
+}
+
+function checkAnswer{
+// this will check if the answer
+// add to our score acc
 }
 
 function handleSubmit{
+// jquery will point to our start button and will listen for a click
+// on click:
+//  run generate nextQuestionScreen
+//  call render function 
+//  this will call checkAnswer()
 
 }
 
 function handleNext{
-
+// jquery will point to our start button and will listen for a click
+// on click:
+//  increment questionNumber counter
+//  call render function with generateNextQUestionScreen as arg;
 }
 
 function handleRestart{
-  
+// jquery will point to our start button and will listen for a click
+// on click:
+//  call render function with generateStartScreen as arg
+//  reset questionCounter
+//  reset score counter
 }
 
 function eventHandler{
