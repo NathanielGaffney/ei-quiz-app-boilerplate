@@ -1,1 +1,3 @@
-### Boilerplate app structure for Quiz App project
+Quiz application
+
+by Nathaniel Gaffney and Brandon Weiss

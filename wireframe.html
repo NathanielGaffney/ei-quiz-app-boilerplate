@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Quiz App</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet"
+        type="text/css" />
+    <link href="app.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <header>
+        <h1>Star Wars Quiz</h1>
+    </header>
+    <main>
+        <div>
+            <button class="start">
+                Start Quiz
+            </button>
+        </div>
+        <div>
+            <h2>question x</h2>
+            <form>
+                <div>
+                    <input type="radio" id="q1" name='q1' value='true'>
+                    <label for='q1'>answer 1</label>
+                    <input type="radio" id="q2" name='q2' value='false'>
+                    <label for='q2'>answer 2</label>
+                    <input type="radio" id="q3" name='q3' value='false'>
+                    <label for='q3'>answer 3</label>
+                    <input type="radio" id="q4" name='q4' value='false'>
+                    <label for='q4'>answer 4</label>
+                </div>
+                <div>
+                    <button>
+                        Submit
+                    </button>
+                </div>
+            </form>
+            <div>
+                <div>
+                    question out of total
+                </div>
+                <div>
+                    answers correct
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <h2>congrats</h2>
+                <h3>results</h3>
+            </div>
+            <div>
+                <button>
+                    retake the quiz
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.js" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
