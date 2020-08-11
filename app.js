@@ -57,21 +57,64 @@ let score = 0;
 let questionNumber = 0;
 
 
-function generateStartScreen
+function generateStartScreen{
+//button that triggers start quiz
+// html image tag location
+}
 
+function generateQuestionScreen{
+// html image tag location
+// display question form based on questionNumber
+// display score and question count
+// question form has radio buttons and submit button
+// upon submit press (render), display correct answer and add to score acc if correct
+// submit button is replaced with next question button
+// next question button increment the question number, changing the question object, and then re render
+}
 
+function generateEndScreen{
+// html image tag location
+// congrats message from array, based on score
+// score
+// button to re take quiz (sets question count to 0 and renders)
+}
 
+function generateScreen{
+//this function calls the correct generate function based on a conditional
+// if the questionNumber is 0 then generateStartScreen
+// if the questionNumber is 1-5 generateQuestion screen
+// if the questionNumber is 6 generateEndScreen
+}
 
+////////////
 
+function render{
+ // varible is  = generateScreen()
+ // jquery location .html(variable)
+}
 
+/////////
 
+function handleStart{
 
+}
 
+function handleSubmit{
 
+}
 
+function handleNext{
 
+}
 
+function handleRestart{
+  
+}
 
+function eventHandler{
+// render
+// all handles
+}
 
 
 
