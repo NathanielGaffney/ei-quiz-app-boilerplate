@@ -78,13 +78,13 @@ function generateQuestionScreen(){
   <div class='primary' style="background-image: url('images/galatic-senate.png')">
     <form>
       <div class='question'>
-        <input type="radio" id="q1" name='question' value='true'>
+        <input type="radio" id="q1" name='question' value='true' required>
         <label for='q1'>answer 1</label>
-        <input type="radio" id="q2" name='question' value='false'>
+        <input type="radio" id="q2" name='question' value='false' required>
         <label for='q2'>answer 2</label>
-        <input type="radio" id="q3" name='question' value='false'>
+        <input type="radio" id="q3" name='question' value='false' required>
         <label for='q3'>answer 3</label>
-        <input type="radio" id="q4" name='question' value='false'>
+        <input type="radio" id="q4" name='question' value='false' required>
         <label for='q4'>answer 4</label>
       </div>
       <button type='submit' class='submit'>
@@ -124,7 +124,7 @@ return (`<div class="box">
   <div class='answer'>
     Correct!
   </div>
-  <button class='submit'>
+  <button type='submit' class='next'>
     Next Question
   </button>
   <div class='counters'>
@@ -177,11 +177,16 @@ function render(arg){
 
 /////////
 
+function incCounter(){
+  questionNumber ++;
+}
+
 // We could potentially pass in all other generate functions as an argument (arg) in our render function
 
 function handleStart(){
-  $('.start').on('click', function(){
+  $('.start').on('mouseup', function(){
     render(generateQuestionScreen);
+    incCounter();
   });
 };
 
@@ -201,6 +206,7 @@ function handleSubmit(){
   $('main').on('submit', 'form', function(e){
     e.preventDefault();
     checkAnswer($('input[name="question"]:checked').val());
+    render(generateNextQuestionScreen);
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -211,13 +217,27 @@ function handleSubmit(){
 }
 
 function handleNext(){
+  $('main').on('mouseup', '.next', function(){
+    incCounter();
+    questionNumber === 6 ? render(generateEndScreen): render(generateQuestionScreen);
+  });
 // jquery will point to our start button and will listen for a click
 // on click:
 //  increment questionNumber counter
 //  call render function with generateNextQUestionScreen as arg;
 }
 
+function reset(){
+  score = 0;
+  questionNumber = 0;
+}
+
 function handleRestart(){
+  $('main').on('mouseup', '.restart', function(){
+    reset();
+    render(generateStartScreen);
+    console.log(questionNumber);
+  });
 // jquery will point to our start button and will listen for a click
 // on click:
 //  call render function with generateStartScreen as arg
@@ -231,6 +251,8 @@ function eventHandler(){
   
   $(handleStart);
   $(handleSubmit);
+  $(handleNext);
+  $(handleRestart);
 }
 
 
