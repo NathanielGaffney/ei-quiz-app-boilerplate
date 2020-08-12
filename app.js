@@ -58,34 +58,44 @@ let questionNumber = 0;
 
 
 function generateStartScreen(){
-  return(`<div class='primary' style="background-image: url('images/title.jpeg')">
-  <button class='start'>
-    Start The Quiz!
-  </button>
+  return(`<div class="box">
+  <div class="banner primary">
+    <h1>Star Wars Quiz</h1>
+  </div>
+  <div class='primary' style="background-image: url('images/title.jpeg')">
+    <button class='start'>
+      Start The Quiz!
+    </button>
+  </div>
 </div>`);
 }
 
 function generateQuestionScreen(){
-  return(`<div class='primary' style="background-image: url('images/galatic-senate.png')">
-  <form>
-    <div class='question'>
-      <input type="radio" id="q1" name='q1' value='true'>
-      <label for='q1'>answer 1</label>
-      <input type="radio" id="q2" name='q2' value='false'>
-      <label for='q2'>answer 2</label>
-      <input type="radio" id="q3" name='q3' value='false'>
-      <label for='q3'>answer 3</label>
-      <input type="radio" id="q4" name='q4' value='false'>
-      <label for='q4'>answer 4</label>
+  return(`<div class="box">
+  <div class="banner primary">
+    <h1>Star Wars Quiz</h1>
+  </div>
+  <div class='primary' style="background-image: url('images/galatic-senate.png')">
+    <form>
+      <div class='question'>
+        <input type="radio" id="q1" name='q1' value='true'>
+        <label for='q1'>answer 1</label>
+        <input type="radio" id="q2" name='q2' value='false'>
+        <label for='q2'>answer 2</label>
+        <input type="radio" id="q3" name='q3' value='false'>
+        <label for='q3'>answer 3</label>
+        <input type="radio" id="q4" name='q4' value='false'>
+        <label for='q4'>answer 4</label>
+      </div>
+      <button class='submit'>
+        Submit Answer
+      </button>
+    </form>
+    <div class='counters'>
+      <div>Question X out 5</div>
+      <div>X correct answers</div>
     </div>
-<button class='submit'>
-  Submit Answer
-</button>
-</form>
-<div class='counters'>
-  <div>Question X out 5</div>
-  <div>X correct answers</div>
-</div>
+  </div>
 </div>`)
 };
 
@@ -100,27 +110,48 @@ function generateQuestionScreen(){
 //}
 
 function generateNextQuestionScreen(){
-return (`<div class='primary' style="background-image: url('images/galatic-senate.png')">
-        <div class='question'>
-          <div>answer 1</div>
-          <div class="correct">answer 2</div>
-          <div>answer 3</div>
-          <div>answer 4</div>
-        </div>
-        <div class='answer'>
-          Correct!
-        </div>
-        <button class='submit'>
-          Next Question
-        </button>
-      <div class='counters'>
-        <div>Question X out 5</div>
-        <div>X correct answers</div>
-      </div>
-    </div>`);
+return (`<div class="box">
+<div class="banner primary">
+  <h1>Star Wars Quiz</h1>
+</div>
+<div class='primary' style="background-image: url('images/galatic-senate.png')">
+  <div class='question'>
+    <div>answer 1</div>
+    <div class="correct">answer 2</div>
+    <div>answer 3</div>
+    <div>answer 4</div>
+  </div>
+  <div class='answer'>
+    Correct!
+  </div>
+  <button class='submit'>
+    Next Question
+  </button>
+  <div class='counters'>
+    <div>Question X out 5</div>
+    <div>X correct answers</div>
+  </div>
+</div>
+</div>`);
 }
 
 function generateEndScreen(){
+  return (`<div class="box">
+  <div class="banner primary">
+    <h1>Star Wars Quiz</h1>
+  </div>
+  <div class='primary' style="background-image: url('images/final.jpg')">
+    <div class='answer'>
+      Congratulations! You are a Jedi Master!
+    </div>
+    <div class='answer'>
+      Final score 5 out of 5
+    </div>
+    <button class='restart'>
+      Retake The Quiz
+    </button>
+  </div>
+</div>`);
 // html image tag location
 // congrats message from array, based on score
 // score
