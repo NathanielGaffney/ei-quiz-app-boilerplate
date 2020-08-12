@@ -100,9 +100,24 @@ function generateQuestionScreen(){
 //}
 
 function generateNextQuestionScreen(){
-// Displays results from previous
-// shows updated score counter
-// displays "next" question button
+return (`<div class='primary' style="background-image: url('images/galatic-senate.png')">
+        <div class='question'>
+          <div>answer 1</div>
+          <div class="correct">answer 2</div>
+          <div>answer 3</div>
+          <div>answer 4</div>
+        </div>
+        <div class='answer'>
+          Correct!
+        </div>
+        <button class='submit'>
+          Next Question
+        </button>
+      <div class='counters'>
+        <div>Question X out 5</div>
+        <div>X correct answers</div>
+      </div>
+    </div>`);
 }
 
 function generateEndScreen(){
@@ -134,11 +149,9 @@ function render(arg){
 // We could potentially pass in all other generate functions as an argument (arg) in our render function
 
 function handleStart(){
-  
-  $('button').click(function(event) {
-    console.log()
+  $('.start').on('click', function(){
+    render(generateQuestionScreen);
   });
-
 };
 
 // jquery will point to our start button and will listen for a click
@@ -153,6 +166,11 @@ function checkAnswer(){
 }
 
 function handleSubmit(){
+  $('.submit').on('click', function(e){
+    e.preventDefault();
+    console.log('check')
+    //render(generateQuestionScreen);
+  });
 // jquery will point to our start button and will listen for a click
 // on click:
 //  run generate nextQuestionScreen
@@ -177,13 +195,14 @@ function handleRestart(){
 }
 
 function eventHandler(){
-// render
-// all handles
+  $(render(generateNextQuestionScreen));
+  //$(render(generateStartScreen));
+  
+  $(handleStart);
+  $(handleSubmit);
 }
 
-
-$(render(generateStartScreen));
-
+$(eventHandler);
 
 
 

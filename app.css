@@ -9,6 +9,7 @@
 
 .primary {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -18,21 +19,40 @@
 }
 
 .banner{
+  text-align: center;
   background-color: gold;
 }
 
 .question{
+  text-align: center;
   font-size: 7vw;
   background-color: gold;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 30%;
-  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  width: 30%;
 }
 
 .submit {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
   width: 30%;
+}
+
+.answer {
+  font-size: 7vw;
+  background-color: gold;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  width: 60%;
 }
 
 .start {
@@ -44,6 +64,10 @@
   display: flex;
   flex-direction: row;
   background-color: red;
-  margin: none;
-  justify-content: center;
+  margin-top: 10%;
+  justify-content: space-evenly;
+}
+
+.correct {
+  background-color: greenyellow;
 }
