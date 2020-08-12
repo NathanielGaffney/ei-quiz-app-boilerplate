@@ -18,33 +18,38 @@
 const store = {
   questions: [{
                 id: 1,
-                question: '',
-                choices: ['a','b','c','d'],
-                correctAnswer: 'a',
+                question: 'Who is the main character in Star Wars Jedi: Fallen Order? ',
+                choices: ['Luke Skywalker','Galen Marek','Cal Kestis','Obi-Wan Kenobi'],
+                correctAnswer: 'Cal Kestis',
+                image: 'images/fallen-order.jpg',
               },
               {
                 id: 2,
-                question: '',
-                choices: ['1','2','3','4'],
-                correctAnswer: '3',
+                question: "What race are the guards at Jabba's palace?",
+                choices: ['Gungan','Gamorrean','Mandalorian','Jawa'],
+                correctAnswer: 'Gamorrean',
+                image: 'images/gamorrean.jpeg',
               },
               {
                 id: 3,
-                question: '',
-                choices: ['cat','dog','rat','bat'],
-                correctAnswer: 'bat',
+                question: 'Who was the Sith Lord before Darth Sidious?',
+                choices: ['Darth Vader','Darth Revan','Darth Bane','Darth Plagueis'],
+                correctAnswer: 'Darth Plagueis',
+                image: 'images/sith-lord.jpg',
               },
                 {
                 id: 4,
-                question: '',
-                choices: ['sam','fran','dan','man'],
-                correctAnswer: 'fran',
+                question: 'How many pods are in the Galactic Senate?',
+                choices: ['248','512','1024','1524'],
+                correctAnswer: '1024',
+                image: 'images/galactic-senate.png',
               },
               {
                 id: 5,
-                question: '',
-                choices: ['SF','NYC','LA','TK'],
-                correctAnswer: 'LA',
+                question: 'What is the appropriate response to someone saying "Hello there"?',
+                choices: [`"General Kenobi!"`,`"Help me Obi-Wan Kenobi, you're my only hope."`,`"I hate you!"`,`"These aren't the droids you're looking for."`],
+                correctAnswer: `"General Kenobi!"`,
+                image: 'images/hello.png'
               }],
       score: 0,
       questionNumber: 0,
@@ -81,17 +86,17 @@ function generateQuestionScreen(){
   <div class="banner primary">
     <h1>Star Wars Quiz</h1>
   </div>
-  <div class='primary' style="background-image: url('images/galatic-senate.png')">
+  <div class='primary' style="background-image: url(${store.questions[store.questionNumber].image})">
     <form>
       <div class='question'>
-      <div>Question</div>
-        <input type="radio" id="q1" name='question' value=${store.questions[store.questionNumber].choices[0]} required>
+      <div>${store.questions[store.questionNumber].question}</div>
+        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[0]}" required>
         <label for='q1'>${store.questions[store.questionNumber].choices[0]}</label>
-        <input type="radio" id="q2" name='question' value=${store.questions[store.questionNumber].choices[1]} required>
+        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[1]}" required>
         <label for='q2'>${store.questions[store.questionNumber].choices[1]}</label>
-        <input type="radio" id="q3" name='question' value=${store.questions[store.questionNumber].choices[2]} required>
+        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[2]}" required>
         <label for='q3'>${store.questions[store.questionNumber].choices[2]}</label>
-        <input type="radio" id="q4" name='question' value=${store.questions[store.questionNumber].choices[3]} required>
+        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[3]}" required>
         <label for='q4'>${store.questions[store.questionNumber].choices[3]}</label>
       </div>
       <button type='submit' class='submit'>
@@ -121,7 +126,7 @@ return (`<div class="box">
 <div class="banner primary">
   <h1>Star Wars Quiz</h1>
 </div>
-<div class='primary' style="background-image: url('images/galatic-senate.png')">
+<div class='primary' style="background-image: url(${store.questions[store.questionNumber].image})">
   <div class='question'>
     <div ${feedbackClass(store.questions[store.questionNumber].choices[0])}>${store.questions[store.questionNumber].choices[0]}</div>
     <div ${feedbackClass(store.questions[store.questionNumber].choices[1])}>${store.questions[store.questionNumber].choices[1]}</div>
@@ -129,7 +134,7 @@ return (`<div class="box">
     <div ${feedbackClass(store.questions[store.questionNumber].choices[3])}>${store.questions[store.questionNumber].choices[3]}</div>
   </div>
   <div class='answer'>
-    Correct!
+    ${result()}
   </div>
   <button type='submit' class='next'>
   ${nextButton()}
@@ -140,6 +145,13 @@ return (`<div class="box">
   </div>
 </div>
 </div>`);
+}
+
+function result(){
+  if (latestAnswer === store.questions[store.questionNumber].correctAnswer){
+    return 'Correct!'
+  }
+  return 'Incorrect!'
 }
 
 function feedbackClass(x) {
@@ -230,7 +242,7 @@ function handleStart(){
     render();
  
   });
-};
+}
 
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -296,8 +308,6 @@ function handleRestart(){
 
 function eventHandler(){
   render();
-  //$(render(generateStartScreen));
-  
   handleStart();
   handleSubmit();
   handleNext();
