@@ -202,7 +202,7 @@ function eventHandler(){
   $(handleSubmit);
 }
 
-$(eventHandler);
+//$(eventHandler);
 
 
 

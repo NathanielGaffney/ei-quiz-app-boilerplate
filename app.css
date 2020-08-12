@@ -6,6 +6,13 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+body{
+  background-image: url('images/space.jpg');
+}
+
+main{
+  
+}
 
 .primary {
   display: flex;
@@ -21,6 +28,7 @@
 .banner{
   text-align: center;
   background-color: gold;
+  font-size: 4vw;
 }
 
 .question{
@@ -58,6 +66,14 @@
 .start {
   width:30%;
   margin: 60%;
+}
+
+.restart {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  width: 30%;
 }
 
 .counters {
