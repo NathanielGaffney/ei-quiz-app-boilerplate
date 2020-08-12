@@ -78,16 +78,16 @@ function generateQuestionScreen(){
   <div class='primary' style="background-image: url('images/galatic-senate.png')">
     <form>
       <div class='question'>
-        <input type="radio" id="q1" name='q1' value='true'>
+        <input type="radio" id="q1" name='question' value='true'>
         <label for='q1'>answer 1</label>
-        <input type="radio" id="q2" name='q2' value='false'>
+        <input type="radio" id="q2" name='question' value='false'>
         <label for='q2'>answer 2</label>
-        <input type="radio" id="q3" name='q3' value='false'>
+        <input type="radio" id="q3" name='question' value='false'>
         <label for='q3'>answer 3</label>
-        <input type="radio" id="q4" name='q4' value='false'>
+        <input type="radio" id="q4" name='question' value='false'>
         <label for='q4'>answer 4</label>
       </div>
-      <button class='submit'>
+      <button type='submit' class='submit'>
         Submit Answer
       </button>
     </form>
@@ -191,16 +191,16 @@ function handleStart(){
 //  call render function
 
 
-function checkAnswer(){
-// this will check if the answer
-// add to our score acc
+function checkAnswer(userAnswer){
+  if(userAnswer === 'true'){
+    score++;
+  }
 }
 
 function handleSubmit(){
-  $('.submit').on('click', function(e){
+  $('main').on('submit', 'form', function(e){
     e.preventDefault();
-    console.log('check')
-    //render(generateQuestionScreen);
+    checkAnswer($('input[name="question"]:checked').val());
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -226,14 +226,15 @@ function handleRestart(){
 }
 
 function eventHandler(){
-  $(render(generateNextQuestionScreen));
+  $(render(generateStartScreen));
   //$(render(generateStartScreen));
   
   $(handleStart);
   $(handleSubmit);
 }
 
-//$(eventHandler);
+
+$(eventHandler);
 
 
 
