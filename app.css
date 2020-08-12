@@ -32,7 +32,6 @@ main{
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -45,7 +44,7 @@ main{
 
 .question{
   text-align: center;
-  font-size: 7vw;
+  font-size: 4.5vw;
   background-color: gold;
   display: flex;
   flex-direction: column;
@@ -53,7 +52,8 @@ main{
   margin-left: auto;
   margin-right: auto;
   margin-top: 10%;
-  width: 30%;
+  width: 80%;
+  padding: 2.5% !important;
 }
 
 .submit {
@@ -116,4 +116,14 @@ main{
   margin-right: auto;
   margin-top: 10%;
   width: 30%;
+}
+
+input {
+  display: flex;
+  align-content: center;
+}
+
+.endscreen {
+  font-size: 9vw;
+  text-align: center;
 }
