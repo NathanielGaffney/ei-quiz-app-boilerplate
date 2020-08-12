@@ -10,12 +10,20 @@ body{
   background-image: url('images/space.jpg');
 }
 
-.box{
-  display:flex;
+main{
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 10%;
+  height: 100vh;
+}
+
+.box {
+  width: 90vw;
+}
+
+.box .primary .question{
+ padding: 2rem;
 }
 
 .primary {
