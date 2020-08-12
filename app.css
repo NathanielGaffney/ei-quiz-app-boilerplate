@@ -105,6 +105,10 @@ main{
   background-color: greenyellow;
 }
 
+.incorrect {
+  background-color: red;
+}
+
 .next {
   display: flex;
   justify-items: center;

@@ -123,10 +123,10 @@ return (`<div class="box">
 </div>
 <div class='primary' style="background-image: url('images/galatic-senate.png')">
   <div class='question'>
-    <div>answer 1</div>
-    <div class="correct">answer 2</div>
-    <div>answer 3</div>
-    <div>answer 4</div>
+    <div ${feedbackClass(store.questions[store.questionNumber].choices[0])}>${store.questions[store.questionNumber].choices[0]}</div>
+    <div ${feedbackClass(store.questions[store.questionNumber].choices[1])}>${store.questions[store.questionNumber].choices[1]}</div>
+    <div ${feedbackClass(store.questions[store.questionNumber].choices[2])}>${store.questions[store.questionNumber].choices[2]}</div>
+    <div ${feedbackClass(store.questions[store.questionNumber].choices[3])}>${store.questions[store.questionNumber].choices[3]}</div>
   </div>
   <div class='answer'>
     Correct!
@@ -141,6 +141,21 @@ return (`<div class="box">
 </div>
 </div>`);
 }
+
+function feedbackClass(x) {
+  console.log(x);
+  console.log(latestAnswer);
+  if(latestAnswer === x) {
+    if (latestAnswer === store.questions[store.questionNumber].correctAnswer) {
+      console.log('correct')
+      return "class='correct'";
+    }
+    console.log('incorrect')
+    return "class='incorrect'";
+  }
+  console.log('nothing happened');
+}
+
 
 function nextButton(){
   if (store.questionNumber < store.questions.length - 1){
@@ -229,10 +244,13 @@ function checkAnswer(userAnswer){
   }
 }
 
+let latestAnswer = ''
+
 function handleSubmit(){
   $('main').on('submit', 'form', function(e){
     e.preventDefault();
     checkAnswer($('input[name="question"]:checked').val());
+    latestAnswer = $('input[name="question"]:checked').val()
     store.feedback = true;
     render();
   });
