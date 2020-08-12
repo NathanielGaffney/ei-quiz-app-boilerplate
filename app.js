@@ -15,46 +15,52 @@
 //  There should be a special message tied to the test results, displayed
 //  A button should appear that allows the user to restart the quiz from the "start quiz" display
 
-const store = [
-  {
-    id: 1,
-    question: '',
-    choices: ['a','b','c','d'],
-    correctAnswer: 'a',
-    answeredCorrectly: false
-  },
-  {
-    id: 2,
-    question: '',
-    choices: ['1','2','3','4'],
-    correctAnswer: 'a',
-    answeredCorrectly: false
-  },
-  {
-    id: 3,
-    question: '',
-    choices: ['cat','dog','rat','bat'],
-    correctAnswer: 'a',
-    answeredCorrectly: false
-  },
-    {
-    id: 4,
-    question: '',
-    choices: ['sam','fran','dan','man'],
-    correctAnswer: 'a',
-    answeredCorrectly: false
-  },
-  {
-    id: 5,
-    question: '',
-    choices: ['SF','NYC','LA','TK'],
-    correctAnswer: 'a',
-    answeredCorrectly: false
-  }
-]
+const store = {
+  questions: [{
+                id: 1,
+                question: '',
+                choices: ['a','b','c','d'],
+                correctAnswer: 'a',
+              },
+              {
+                id: 2,
+                question: '',
+                choices: ['1','2','3','4'],
+                correctAnswer: '3',
+              },
+              {
+                id: 3,
+                question: '',
+                choices: ['cat','dog','rat','bat'],
+                correctAnswer: 'bat',
+              },
+                {
+                id: 4,
+                question: '',
+                choices: ['sam','fran','dan','man'],
+                correctAnswer: 'fran',
+              },
+              {
+                id: 5,
+                question: '',
+                choices: ['SF','NYC','LA','TK'],
+                correctAnswer: 'LA',
+              }],
+      score: 0,
+      questionNumber: 0,
+      quizStarted: false,
+      feedback: false,
+    }
+           
 
-let score = 0;
-let questionNumber = 0;
+const message = [
+  'You are Bantha Fodder',
+  'You are a Jedi Youngling',
+  'You are a Jedi Padawan',
+  'You are a Jedi Knight',
+  'You are a Jedi Master',
+  'You are a Jedi Grand Master'
+]
 
 
 function generateStartScreen(){
@@ -78,22 +84,23 @@ function generateQuestionScreen(){
   <div class='primary' style="background-image: url('images/galatic-senate.png')">
     <form>
       <div class='question'>
-        <input type="radio" id="q1" name='question' value='true' required>
-        <label for='q1'>${store[questionNumber].choices[0]}</label>
-        <input type="radio" id="q2" name='question' value='false' required>
-        <label for='q2'>${store[questionNumber].choices[1]}</label>
-        <input type="radio" id="q3" name='question' value='false' required>
-        <label for='q3'>${store[questionNumber].choices[2]}</label>
-        <input type="radio" id="q4" name='question' value='false' required>
-        <label for='q4'>${store[questionNumber].choices[3]}</label>
+      <div>Question</div>
+        <input type="radio" id="q1" name='question' value=${store.questions[store.questionNumber].choices[0]} required>
+        <label for='q1'>${store.questions[store.questionNumber].choices[0]}</label>
+        <input type="radio" id="q2" name='question' value=${store.questions[store.questionNumber].choices[1]} required>
+        <label for='q2'>${store.questions[store.questionNumber].choices[1]}</label>
+        <input type="radio" id="q3" name='question' value=${store.questions[store.questionNumber].choices[2]} required>
+        <label for='q3'>${store.questions[store.questionNumber].choices[2]}</label>
+        <input type="radio" id="q4" name='question' value=${store.questions[store.questionNumber].choices[3]} required>
+        <label for='q4'>${store.questions[store.questionNumber].choices[3]}</label>
       </div>
       <button type='submit' class='submit'>
         Submit Answer
       </button>
     </form>
     <div class='counters'>
-      <div>Question X out 5</div>
-      <div>X correct answers</div>
+      <div>Question ${store.questionNumber + 1} out of ${store.questions.length}</div>
+      <div>${store.score} correct answers</div>
     </div>
   </div>
 </div>`)
@@ -125,14 +132,21 @@ return (`<div class="box">
     Correct!
   </div>
   <button type='submit' class='next'>
-    Next Question
+  ${nextButton()}
   </button>
   <div class='counters'>
-    <div>Question X out 5</div>
-    <div>X correct answers</div>
+    <div>Question ${store.questionNumber + 1} out of ${store.questions.length}</div>
+    <div>${store.score} correct answers</div>
   </div>
 </div>
 </div>`);
+}
+
+function nextButton(){
+  if (store.questionNumber < store.questions.length - 1){
+    return 'Next Question'
+  }
+  return 'Get Results'
 }
 
 function generateEndScreen(){
@@ -142,10 +156,10 @@ function generateEndScreen(){
   </div>
   <div class='primary' style="background-image: url('images/final.jpg')">
     <div class='answer'>
-      Congratulations! You are a Jedi Master!
+      ${message[store.score]}
     </div>
     <div class='answer'>
-      Final score 5 out of 5
+      Final score ${store.score} out of ${store.questions.length}
     </div>
     <button class='restart'>
       Retake The Quiz
@@ -168,24 +182,37 @@ function generateEndScreen(){
 
 ////////////
 
-function render(arg){
+function render(){
  // varible is  = arg, which could be generateScreen() or generateNextQuestionScreen;
  // jquery location .html(variable)
- let x = arg;
+ let x = ''
+ if (!store.quizStarted){
+   x = generateStartScreen();
+ } else if (store.questionNumber < store.questions.length){
+   if (store.feedback){
+     x = generateNextQuestionScreen();
+   } else {
+   x = generateQuestionScreen();
+   }
+ } else {
+ x = generateEndScreen();
+ }
   $('main').html(x);
 }
 
 /////////
 
 function incCounter(){
-  questionNumber ++;
+  store.questionNumber ++;
+  console.log(store.questionNumber);
 }
 
 // We could potentially pass in all other generate functions as an argument (arg) in our render function
 
 function handleStart(){
-  $('.start').on('mouseup', function(){
-    render(generateQuestionScreen);
+  $('main').on('click', '.start', function(){
+    store.quizStarted = true;
+    render();
  
   });
 };
@@ -197,8 +224,8 @@ function handleStart(){
 
 
 function checkAnswer(userAnswer){
-  if(userAnswer === 'true'){
-    score++;
+  if(userAnswer === store.questions[store.questionNumber].correctAnswer){
+    store.score++;
   }
 }
 
@@ -206,7 +233,8 @@ function handleSubmit(){
   $('main').on('submit', 'form', function(e){
     e.preventDefault();
     checkAnswer($('input[name="question"]:checked').val());
-    render(generateNextQuestionScreen);
+    store.feedback = true;
+    render();
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -217,10 +245,12 @@ function handleSubmit(){
 }
 
 function handleNext(){
-  $('main').on('mouseup', '.next', function(){
-    incCounter();
-    questionNumber === (store.length) ? render(generateEndScreen): render(generateQuestionScreen);
-    console.log(questionNumber);
+  $('main').on('click', '.next', function(){
+    if (store.questionNumber < store.questions.length){
+      incCounter();
+    } 
+    store.feedback = false;
+    render();
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -229,16 +259,15 @@ function handleNext(){
 }
 
 function reset(){
-  score = 0;
-  questionNumber = 0;
+  store.score = 0;
+  store.questionNumber = 0;
+  store.quizStarted = false;
 }
 
 function handleRestart(){
-  $('main').on('mouseup', '.restart', function(e){
+  $('main').on('click', '.restart', function(e){
     reset();
-    e.stopPropagation()
-    eventHandler();
-    console.log(questionNumber);
+    render();
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -248,13 +277,13 @@ function handleRestart(){
 }
 
 function eventHandler(){
-  $(render(generateStartScreen));
+  render();
   //$(render(generateStartScreen));
   
-  $(handleStart);
-  $(handleSubmit);
-  $(handleNext);
-  $(handleRestart);
+  handleStart();
+  handleSubmit();
+  handleNext();
+  handleRestart();
 }
 
 
