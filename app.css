@@ -6,3 +6,36 @@
   * https://github.com/andreacardybailey/responsive_example/blob/master/styles/responsive-base.css 
   *
 */
+
+.primary {
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner{
+  background-color: gold;
+}
+
+.question{
+  font-size: 7vw;
+  background-color: gold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30%;
+  width: 100%;
+}
+
+.submit {
+  width: 30%;
+}
+
+.start {
+  width:30%;
+  margin: 60%;
+}
