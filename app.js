@@ -66,12 +66,38 @@ function generateStartScreen(){
 }
 
 function generateQuestionScreen(){
-// html image tag location
+  return(`<div class='primary' style="background-image: url('images/galatic-senate.png')">
+  <form>
+    <div class='question'>
+      <input type="radio" id="q1" name='q1' value='true'>
+      <label for='q1'>answer 1</label>
+      <input type="radio" id="q2" name='q2' value='false'>
+      <label for='q2'>answer 2</label>
+      <input type="radio" id="q3" name='q3' value='false'>
+      <label for='q3'>answer 3</label>
+      <input type="radio" id="q4" name='q4' value='false'>
+      <label for='q4'>answer 4</label>
+    </div>
+<button class='submit'>
+  Submit Answer
+</button>
+</form>
+<div class='counters'>
+  <div>Question X out 5</div>
+  <div>X correct answers</div>
+</div>
+</div>`)
+};
+
+
+
+
+  // html image tag location
 // display question form based on questionNumber
 // display score and question count
 // question form has radio buttons and submit button
 // shows updated question counter 
-}
+//}
 
 function generateNextQuestionScreen(){
 // Displays results from previous
@@ -108,11 +134,18 @@ function render(arg){
 // We could potentially pass in all other generate functions as an argument (arg) in our render function
 
 function handleStart(){
+  
+  $('button').click(function(event) {
+    console.log()
+  });
+
+};
+
 // jquery will point to our start button and will listen for a click
 // on click:
 //  increment questionNumber counter
 //  call render function
-}
+
 
 function checkAnswer(){
 // this will check if the answer
@@ -148,7 +181,8 @@ function eventHandler(){
 // all handles
 }
 
-//$(render(generateStartScreen));
+
+$(render(generateStartScreen));
 
 
 

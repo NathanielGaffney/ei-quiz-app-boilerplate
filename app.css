@@ -39,3 +39,11 @@
   width:30%;
   margin: 60%;
 }
+
+.counters {
+  display: flex;
+  flex-direction: row;
+  background-color: red;
+  margin: none;
+  justify-content: center;
+}
