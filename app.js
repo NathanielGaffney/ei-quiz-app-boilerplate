@@ -26,28 +26,28 @@ const store = [
   {
     id: 2,
     question: '',
-    choices: ['a','b','c','d'],
+    choices: ['1','2','3','4'],
     correctAnswer: 'a',
     answeredCorrectly: false
   },
   {
     id: 3,
     question: '',
-    choices: ['a','b','c','d'],
+    choices: ['cat','dog','rat','bat'],
     correctAnswer: 'a',
     answeredCorrectly: false
   },
     {
     id: 4,
     question: '',
-    choices: ['a','b','c','d'],
+    choices: ['sam','fran','dan','man'],
     correctAnswer: 'a',
     answeredCorrectly: false
   },
   {
     id: 5,
     question: '',
-    choices: ['a','b','c','d'],
+    choices: ['SF','NYC','LA','TK'],
     correctAnswer: 'a',
     answeredCorrectly: false
   }
@@ -79,13 +79,13 @@ function generateQuestionScreen(){
     <form>
       <div class='question'>
         <input type="radio" id="q1" name='question' value='true' required>
-        <label for='q1'>answer 1</label>
+        <label for='q1'>${store[questionNumber].choices[0]}</label>
         <input type="radio" id="q2" name='question' value='false' required>
-        <label for='q2'>answer 2</label>
+        <label for='q2'>${store[questionNumber].choices[1]}</label>
         <input type="radio" id="q3" name='question' value='false' required>
-        <label for='q3'>answer 3</label>
+        <label for='q3'>${store[questionNumber].choices[2]}</label>
         <input type="radio" id="q4" name='question' value='false' required>
-        <label for='q4'>answer 4</label>
+        <label for='q4'>${store[questionNumber].choices[3]}</label>
       </div>
       <button type='submit' class='submit'>
         Submit Answer
@@ -186,7 +186,7 @@ function incCounter(){
 function handleStart(){
   $('.start').on('mouseup', function(){
     render(generateQuestionScreen);
-    incCounter();
+ 
   });
 };
 
@@ -219,7 +219,8 @@ function handleSubmit(){
 function handleNext(){
   $('main').on('mouseup', '.next', function(){
     incCounter();
-    questionNumber === 6 ? render(generateEndScreen): render(generateQuestionScreen);
+    questionNumber === (store.length) ? render(generateEndScreen): render(generateQuestionScreen);
+    console.log(questionNumber);
   });
 // jquery will point to our start button and will listen for a click
 // on click:
@@ -233,9 +234,10 @@ function reset(){
 }
 
 function handleRestart(){
-  $('main').on('mouseup', '.restart', function(){
+  $('main').on('mouseup', '.restart', function(e){
     reset();
-    render(generateStartScreen);
+    e.stopPropagation()
+    eventHandler();
     console.log(questionNumber);
   });
 // jquery will point to our start button and will listen for a click
