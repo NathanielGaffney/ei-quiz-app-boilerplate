@@ -18,8 +18,24 @@ main{
   height: 100vh;
 }
 
+h1 {
+  font-family: 'Bungee', cursive;
+}
+
+img {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
 .box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 90vw;
+  height: 80vh;
 }
 
 .box .primary .question{
@@ -30,10 +46,16 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
+  align-items: center;
   background-position: center;
   background-repeat: no-repeat;
+  width: 100%;
+  background-size: contain;
+}
+
+.title{
+  padding: 33.33% 0 33.33% 0;
+  width: 100%;
 }
 
 .banner{
@@ -51,53 +73,64 @@ main{
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
-  width: 80%;
+  width: 95%;
   padding: 2.5% !important;
 }
 
 .submit {
+  font-size: 4vw;
   display: flex;
-  justify-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
-  width: 30%;
+  width: 60%;
+  padding: 5%;
+}
+
+button {
+  text-align: center;
 }
 
 .answer {
   font-size: 7vw;
   background-color: gold;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
-  width: 60%;
+  width: 100%;
 }
 
 .start {
+  font-size: 4vw;
+  display: flex;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60%;
-  margin-bottom: 80%;
-  width:30%;
+  width: 40%;
+  padding: 2%;
+  background-color: gold;
 }
 
 .restart {
+  font-size: 4vw;
+  display: flex;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
-  margin-bottom: 10%;
-  width: 30%;
+  width: 60%;
+  padding: 5%;
+  margin-top: 5%;
+  background-color: greenyellow;
 }
 
 .counters {
+  font-size: 4vw;
   display: flex;
   flex-direction: row;
-  background-color: red;
-  margin-top: 10%;
+  background-color: gold;
   justify-content: space-evenly;
 }
 
@@ -110,12 +143,13 @@ main{
 }
 
 .next {
+  font-size: 4vw;
   display: flex;
-  justify-items: center;
+  justify-content: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
-  width: 30%;
+  width: 60%;
+  padding: 5%;
 }
 
 input {
@@ -126,4 +160,54 @@ input {
 .endscreen {
   font-size: 9vw;
   text-align: center;
+}
+
+@media all and (min-width: 800px){
+  body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  main{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+
+  .box{
+    width: 100%;
+    height: 100%;
+  }
+
+  .banner h1{
+    font-size: 150%;
+  }
+
+
+  .question{
+   font-size: 200%;
+  }
+
+  .submit {
+    font-size: 150%;
+  }
+
+  .counters {
+    font-size: 150%;
+  }
+
+  .answer {
+    font-size: 300%;
+  }
+
+  .restart{
+    font-size: 300%;
+  }
+
+ .banner{
+ display: flex;
+ justify-content: center;
+ }
+
 }
