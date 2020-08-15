@@ -53,9 +53,9 @@ const message = [
 
 function generateStartScreen() {
   return (`<div class="box">
-  <div class="banner">
+  <section class="banner">
     <h1>STAR WARS QUIZ</h1>
-  </div>
+  </section>
   <div class='primary title' style="background-image: url('images/title.jpeg')">
     <button class='start'>
       Start The Quiz!
@@ -66,24 +66,24 @@ function generateStartScreen() {
 
 function generateQuestionScreen() {
   return (`<div class="box">
-  <div class="banner">
+  <section class="banner">
     <h1>STAR WARS QUIZ</h1>
-  </div>
+  </section>
    <div class='primary'>
      <img src=${store.questions[store.questionNumber].image} alt='Jedi:Fallen Order' width='500'>
     </div>
-    <form>
-      <div class='question'>
-      <div class='border'>${store.questions[store.questionNumber].question}</div>
-        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[0]}" required>
-        <label for='q1'>${store.questions[store.questionNumber].choices[0]}</label>
-        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[1]}" required>
-        <label for='q2'>${store.questions[store.questionNumber].choices[1]}</label>
-        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[2]}" required>
-        <label for='q3'>${store.questions[store.questionNumber].choices[2]}</label>
-        <input type="radio" name='question' value="${store.questions[store.questionNumber].choices[3]}" required>
-        <label for='q4'>${store.questions[store.questionNumber].choices[3]}</label>
-      </div>
+    <form id="question_head" role='group' aria-labelledby='question_head'>
+      <section class='question'>
+        <label class='question' for="question_head">${store.questions[store.questionNumber].question}</label>
+        <input type="radio" id='question_1' name='question' value="${store.questions[store.questionNumber].choices[0]}" required>
+        <label for='answer-one'>${store.questions[store.questionNumber].choices[0]}</label>
+        <input type="radio" id='question_2' name='question' value="${store.questions[store.questionNumber].choices[1]}" required>
+        <label for='answer-two'>${store.questions[store.questionNumber].choices[1]}</label>
+        <input type="radio" id='question_3' name='question' value="${store.questions[store.questionNumber].choices[2]}" required>
+        <label for='answer-three'>${store.questions[store.questionNumber].choices[2]}</label>
+        <input type="radio" id='question_4' name='question' value="${store.questions[store.questionNumber].choices[3]}" required>
+        <label for='answer-four'>${store.questions[store.questionNumber].choices[3]}</label>
+      </section>
       <button type='submit' class='submit'>
         Submit Answer
       </button>
@@ -99,28 +99,28 @@ function generateQuestionScreen() {
 
 function generateNextQuestionScreen() {
   return (`<div class="box">
-<div class="banner">
+<section class="banner">
   <h1>STAR WARS QUIZ</h1>
-</div>
+</section>
 <div class='primary'>
  <img src=${store.questions[store.questionNumber].image} alt='Jedi:Fallen Order' width='500'>
  </div>
-  <div class='question'>
-    <div ${feedbackClass(store.questions[store.questionNumber].choices[0])}>${store.questions[store.questionNumber].choices[0]}</div>
-    <div ${feedbackClass(store.questions[store.questionNumber].choices[1])}>${store.questions[store.questionNumber].choices[1]}</div>
-    <div ${feedbackClass(store.questions[store.questionNumber].choices[2])}>${store.questions[store.questionNumber].choices[2]}</div>
-    <div ${feedbackClass(store.questions[store.questionNumber].choices[3])}>${store.questions[store.questionNumber].choices[3]}</div>
-  </div>
-  <div class='answer'>
+  <section class='question'>
+    <p ${feedbackClass(store.questions[store.questionNumber].choices[0])}>${store.questions[store.questionNumber].choices[0]}</p>
+    <p ${feedbackClass(store.questions[store.questionNumber].choices[1])}>${store.questions[store.questionNumber].choices[1]}</p>
+    <p ${feedbackClass(store.questions[store.questionNumber].choices[2])}>${store.questions[store.questionNumber].choices[2]}</p>
+    <p ${feedbackClass(store.questions[store.questionNumber].choices[3])}>${store.questions[store.questionNumber].choices[3]}</p>
+  </section>
+  <section class='answer'>
     ${result()}
-  </div>
+  </section>
   <button type='submit' class='next'>
   ${nextButton()}
   </button>
-  <div class='counters'>
+  <section class='counters'>
     <div>Question ${store.questionNumber + 1} out of ${store.questions.length}</div>
     <div>${store.score} correct answers</div>
-  </div>
+  </section>
 </div>`);
 }
 
@@ -152,18 +152,18 @@ function nextButton() {
 
 function generateEndScreen() {
   return (`<div class="box">
-  <div class="banner">
+  <section class="banner">
     <h1>STAR WARS QUIZ</h1>
-  </div>
+  </section>
   <div class='primary'>
   <img src='images/final.jpg' alt='Jedi:Fallen Order' width='500'>
  </div>
-    <div class='answer endscreen'>
-      ${message[store.score]}
-    </div>
-    <div class='answer endscreen'>
-      Final score ${store.score} out of ${store.questions.length}
-    </div>
+    <section class='answer endscreen'>
+      <p>${message[store.score]}</p>
+    </section>
+    <section class='answer endscreen'>
+      <p>Final score ${store.score} out of ${store.questions.length}</p>
+    </section>
     <button class='restart'>
       Retake The Quiz
     </button>
