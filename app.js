@@ -56,12 +56,13 @@ function generateStartScreen() {
   <section class="banner">
     <h1>STAR WARS QUIZ</h1>
   </section>
-  <div class='primary title' style="background-image: url('images/title.jpeg')">
+  <section class='primary title' style="background-image: url('images/title.jpeg')">
     <button class='start'>
       Start The Quiz!
     </button>
-  </div>
-</div>`);
+  </section>
+</div>`
+);
 }
 
 function generateQuestionScreen() {
@@ -89,8 +90,8 @@ function generateQuestionScreen() {
       </button>
     </form>
     <div class='counters'>
-      <div>Question ${store.questionNumber + 1} out of ${store.questions.length}</div>
-      <div>${store.score} correct answers</div>
+      <span>Question ${store.questionNumber + 1} out of ${store.questions.length}</span>
+      <span>${store.score} correct answers</span>
     </div>
   
 </div>`)
@@ -98,13 +99,14 @@ function generateQuestionScreen() {
 
 
 function generateNextQuestionScreen() {
-  return (`<div class="box">
+  return (//this div box is neccessary to group our sections
+    `<div class="box">
 <section class="banner">
   <h1>STAR WARS QUIZ</h1>
 </section>
-<div class='primary'>
+<section class='primary'>
  <img src=${store.questions[store.questionNumber].image} alt='Jedi:Fallen Order' width='500'>
- </div>
+ </section>
   <section class='question'>
     <p ${feedbackClass(store.questions[store.questionNumber].choices[0])}>${store.questions[store.questionNumber].choices[0]}</p>
     <p ${feedbackClass(store.questions[store.questionNumber].choices[1])}>${store.questions[store.questionNumber].choices[1]}</p>
@@ -118,8 +120,8 @@ function generateNextQuestionScreen() {
   ${nextButton()}
   </button>
   <section class='counters'>
-    <div>Question ${store.questionNumber + 1} out of ${store.questions.length}</div>
-    <div>${store.score} correct answers</div>
+    <span>Question ${store.questionNumber + 1} out of ${store.questions.length}</span>
+    <span>${store.score} correct answers</span>
   </section>
 </div>`);
 }
@@ -155,7 +157,7 @@ function generateEndScreen() {
   <section class="banner">
     <h1>STAR WARS QUIZ</h1>
   </section>
-  <div class='primary'>
+  <div>
   <img src='images/final.jpg' alt='Jedi:Fallen Order' width='500'>
  </div>
     <section class='answer endscreen'>
