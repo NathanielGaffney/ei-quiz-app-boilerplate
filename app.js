@@ -77,13 +77,13 @@ function generateQuestionScreen() {
       <section class='question'>
         <label class='question' for="question_head">${store.questions[store.questionNumber].question}</label>
         <input type="radio" id='question_1' name='question' value="${store.questions[store.questionNumber].choices[0]}" required>
-        <label for='answer-one'>${store.questions[store.questionNumber].choices[0]}</label>
+        <label for='question_1'>${store.questions[store.questionNumber].choices[0]}</label>
         <input type="radio" id='question_2' name='question' value="${store.questions[store.questionNumber].choices[1]}" required>
-        <label for='answer-two'>${store.questions[store.questionNumber].choices[1]}</label>
+        <label for='question_2'>${store.questions[store.questionNumber].choices[1]}</label>
         <input type="radio" id='question_3' name='question' value="${store.questions[store.questionNumber].choices[2]}" required>
-        <label for='answer-three'>${store.questions[store.questionNumber].choices[2]}</label>
+        <label for='question_3'>${store.questions[store.questionNumber].choices[2]}</label>
         <input type="radio" id='question_4' name='question' value="${store.questions[store.questionNumber].choices[3]}" required>
-        <label for='answer-four'>${store.questions[store.questionNumber].choices[3]}</label>
+        <label for='question_4'>${store.questions[store.questionNumber].choices[3]}</label>
       </section>
       <button type='submit' class='submit'>
         Submit Answer
@@ -120,8 +120,8 @@ function generateNextQuestionScreen() {
   ${nextButton()}
   </button>
   <section class='counters'>
-    <span>Question ${store.questionNumber + 1} out of ${store.questions.length}</span>
-    <span>${store.score} correct answers</span>
+    <p>Question ${store.questionNumber + 1} out of ${store.questions.length}</p>
+    <p>${store.score} correct answers</p>
   </section>
 </div>`);
 }
